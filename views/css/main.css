@@ -1,0 +1,30 @@
+body {
+	text-align: center !important;
+}
+
+p {
+	text-align: left;
+    font-size: 17px;
+    margin-top: 15px;
+    margin-bottom: 12px;
+}
+
+.btn {
+    font-size: 17px;
+    padding: 4px 8px;
+}
+
+.mssg {
+    font-size: 17px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.links {
+    font-size: 15px;
+}
+
+.table {
+    font-size: 16px;
+    margin-top: 25px;
+}
