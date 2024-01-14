@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Register</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/main.css">
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#form1").submit(function (event) {
+				// Prevent the default form submission
+				event.preventDefault();
+
+				var passwords = document.getElementsByName("password");
+				if (passwords[0].value != passwords[1].value) {
+					alert("Passwords do not match\nPlease try again");
+				} else {
+					// AJAX request configuration
+					$.ajax({
+						type: 'POST',                  // HTTP method for the request
+						url: '/',                      // URL where the request is sent
+						data: $('#form1').serialize(), // Serialize form data to be sent
+						dataType: "json",              // Expected data type of the response
+						success: function (response) { // Function to be called on successful response
+							if (response.Failure) {
+								document.getElementById("mssg").classList.add("bg-danger");
+								document.getElementById("respMssg").innerHTML = response.Failure;
+							} else {
+								// Reset the form
+								$('#form1')[0].reset();
+
+								document.getElementById("mssg").classList.add("bg-success");
+								// Display the success message from the response
+								document.getElementById("respMssg").innerHTML = response.Success;
+
+								setTimeout(function () {
+									document.getElementById("loginLink").click();
+								}, 3000);
+							}
+						}, error: function () {
+							document.getElementById("mssg").classList.add("bg-danger");
+							document.getElementById("respMssg").innerHTML = "Unable to send data to the server<br />Please try again later";
+						}
+					});
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="col-md-4 col-md-offset-4">
+		<div>
+			<h1>Register</h1>
+		</div>
+
+		<div>
+			<p>Register by providing the following details</p>
+		</div>
+
+		<div class="form-group">
+			<form id="form1" method="post">
+				<input type="text" name="name" placeholder="Name" class="form-control" required><br />
+				<input type="email" name="email" placeholder="Email" class="form-control" required><br />
+				<input type="tel" name="phoneNo" placeholder="Phone Number" class="form-control" required><br />
+				<input type="text" name="dob" placeholder="DOB (DD/MM/YYYY) - Optional" class="form-control"><br />
+				<input type="password" name="password" placeholder="Password" class="form-control" required><br />
+				<input type="password" name="password" placeholder="Confirm Password" class="form-control" required><br />
+				<input type="submit" value="Register" class="btn btn-success">
+			</form>
+		</div>
+
+		<div class="mssg" id="mssg">
+			<span id="respMssg"></span>
+		</div>
+
+		<div class="links">
+			<span>Already Registered? <a href="/login" id="loginLink">Login</a></span>
+		</div>
+	</div>
+</body>
+
+</html>
