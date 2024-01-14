@@ -1,0 +1,21 @@
+{
+  "name": "registration-form",
+  "version": "1.0",
+  "description": "A web application which enables users to register their account and then login using their credentials",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.20.2",
+    "mongoose": "^5.6.10",
+    "ejs": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: No test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}
