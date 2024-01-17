@@ -29,7 +29,7 @@ Note: An OTP based authentication mechanism should be added to this functionalit
 
 <img src="./images/forgotPass.png">
 
-### DataBase:
+### Database:
 For the database **[MongoDB (Atlas)](https://www.mongodb.com/cloud/atlas)** has been used in this application.<br />
 A collection named **Users** is created and populated with the data that user's enter while registration.
 
@@ -47,7 +47,7 @@ Run the following command to install the necessary modules.
 ```
 npm install
 ```
-### Connection to the dataBase
+### Connection to the database
 Create a cluster in MongoDB Atlas and obtain the connection string.
 In ```./db/conn.js``` file, at line ```3``` paste your connection string.
 
